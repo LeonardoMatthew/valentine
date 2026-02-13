@@ -3,13 +3,13 @@ import BackgroundMusic from './components/BackgroundMusic.jsx'
 
 // Sound effect utilities
 const playClickSound = () => {
-  const audio = new Audio('/clicking/0211 (1).mov')
+  const audio = new Audio(`${import.meta.env.BASE_URL}clicking/0211 (1).mov`)
   audio.volume = 0.5
   audio.play().catch(() => {})
 }
 
 const playBubbleSound = () => {
-  const audio = new Audio('/bubble/0211 (1)(1).mov')
+  const audio = new Audio(`${import.meta.env.BASE_URL}bubble/0211 (1)(1).mov`)
   audio.volume = 0.6
   audio.play().catch(() => {})
 }
@@ -604,7 +604,7 @@ export default function App() {
           {pictureRainDrops.map((drop) => (
             <img
               key={drop.id}
-              src={`/pictures/${encodeURIComponent(pictureRain[drop.side])}`}
+              src={`${import.meta.env.BASE_URL}pictures/${encodeURIComponent(pictureRain[drop.side])}`}
               alt=""
               className="picture-rain-drop"
               style={{

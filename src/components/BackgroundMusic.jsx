@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 // Song options - put your MP3 files in the public folder
 const SONG_OPTIONS = [
-  { file: '/music/POV_ you are falling in love - Love & Chill Vibes [XHjxj78AYc0].mp3', name: 'Love & Chill Vibes' },
+  { file: `${import.meta.env.BASE_URL}music/POV_ you are falling in love - Love & Chill Vibes [XHjxj78AYc0].mp3`, name: 'Love & Chill Vibes' },
 ]
 
 export default function BackgroundMusic({ volume = 100, isPlaying = true, currentSongIndex = 0 }) {
