@@ -26,10 +26,14 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install and build
-        run: |
-          npm install
-          npm run build
+      - name: List repo contents
+        run: ls -la && ls -la src/ 2>/dev/null || true
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
