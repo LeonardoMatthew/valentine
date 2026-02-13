@@ -23,11 +23,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          
-
-      - name: List repo contents
-        run: ls -la && ls -la src/ 2>/dev/null || true
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
