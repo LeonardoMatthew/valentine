@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  body {
+    @apply font-indie text-pink-900 antialiased;
+  }
+}
+
+/* Pastel background color cycle */
+@keyframes pastel-bg-cycle {
+  0%, 100% { background-color: #fdf2f8; }   /* pink-50 */
+  16%        { background-color: #faf5ff; }   /* violet-50 */
+  33%        { background-color: #fce7f3; }  /* pink-100 */
+  50%        { background-color: #fdf4ff; }  /* fuchsia-50 */
+  66%        { background-color: #fef3c7; }   /* amber-100 */
+  83%        { background-color: #ecfdf5; }   /* emerald-50 */
+}
+
+.bg-pastel-cycle {
+  animation: pastel-bg-cycle 25s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Spawn from outside only: full opacity until near exit, then fade */
+@keyframes emoji-spawn-top {
+  0% { transform: translate(-50%, -50%) translateY(-40vh); opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) translateY(140vh); opacity: 0; }
+}
+@keyframes emoji-spawn-bottom {
+  0% { transform: translate(-50%, -50%) translateY(40vh); opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) translateY(-140vh); opacity: 0; }
+}
+@keyframes emoji-spawn-left {
+  0% { transform: translate(-50%, -50%) translateX(-40vw); opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) translateX(140vw); opacity: 0; }
+}
+@keyframes emoji-spawn-right {
+  0% { transform: translate(-50%, -50%) translateX(40vw); opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) translateX(-140vw); opacity: 0; }
+}
+
+.emoji-float {
+  position: fixed;
+  pointer-events: none;
+  user-select: none;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  opacity: 1;
+}
+
+/* Pleading bubbles: slow drift in a small loop so they stay readable */
+@keyframes pleading-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(25px, -18px); }
+  50% { transform: translate(-15px, 22px); }
+  75% { transform: translate(18px, 15px); }
+}
+@keyframes pleading-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-22px, -15px); }
+  66% { transform: translate(20px, 18px); }
+}
+@keyframes pleading-drift-3 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-18px, 20px); }
+  50% { transform: translate(22px, -16px); }
+  75% { transform: translate(-20px, -18px); }
+}
+@keyframes pleading-drift-4 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(24px, 20px); }
+}
+
+.pleading-bubble {
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Picture rain: overlap so new appears before old exits - no visible gap */
+@keyframes picture-drop {
+  0% {
+    transform: translate(-50%, 0) translateY(-2vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0) translateY(102vh);
+    opacity: 1;
+  }
+}
+
+.picture-rain-drop {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  /* Sharper rendering when scaled (avoids soft blur from default interpolation) */
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+}
+
+/* Vertical volume slider on success/letter page */
+.volume-slider-vertical {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 0.75rem;
+  height: 10rem;
+  background: linear-gradient(to top, rgb(244 114 182 / 0.4), rgb(244 114 182 / 0.15));
+  border-radius: 9999px;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+}
+.volume-slider-vertical::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: rgb(190 24 93);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.2);
+}
+.volume-slider-vertical::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: rgb(190 24 93);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.2);
+}
