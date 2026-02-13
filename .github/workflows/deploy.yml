@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          
 
       - name: List repo contents
         run: ls -la && ls -la src/ 2>/dev/null || true
