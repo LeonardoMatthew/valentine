@@ -28,7 +28,7 @@ jobs:
 
       - name: Install and build
         run: |
-          npm ci
+          npm install
           npm run build
 
       - name: Setup Pages
